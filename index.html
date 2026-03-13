@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ashish</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='16' fill='%2303020c'/%3E%3Ccircle cx='16' cy='16' r='15' fill='none' stroke='rgba(180%2C100%2C255%2C0.6)' stroke-width='1'/%3E%3Ctext x='16' y='22' text-anchor='middle' font-family='Arial' font-weight='800' font-size='18' fill='rgba(200%2C150%2C255%2C0.95)'%3EA%3C/text%3E%3C/svg%3E">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Inter','Helvetica Neue',Arial,sans-serif;background:#03020c;overflow:hidden}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+#clock{position:fixed;top:clamp(16px,3vw,28px);right:clamp(16px,3vw,32px);z-index:10;text-align:right;opacity:0;transition:opacity .8s;background:rgba(3,2,12,.35);padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,.06);line-height:1.4}
+#clock-time{font-size:clamp(.95rem,2.5vw,1.15rem);font-weight:500;color:rgba(255,255,255,.82);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.wrap{position:relative;z-index:1;text-align:center;padding:2rem;display:flex;flex-direction:column;align-items:center;gap:clamp(1rem,3vw,1.8rem);flex:1;justify-content:center}
+.name{font-size:clamp(3.5rem,12vw,7rem);font-weight:800;letter-spacing:-.03em;color:#fff;line-height:1;text-shadow:0 0 80px rgba(130,100,255,.45),0 0 160px rgba(100,80,220,.2);opacity:0;transition:opacity .7s}
+.url{font-size:clamp(1.2rem,3.5vw,1.7rem);letter-spacing:.15em;color:rgba(255,255,255,.42);text-decoration:none;transition:color .3s;border-right:2px solid rgba(180,160,255,.6);white-space:nowrap;overflow:hidden;width:0;max-width:90vw;display:inline-block;opacity:0}
+.url:hover{color:rgba(255,255,255,.85)}
+.url.blink{animation:cur .75s step-end infinite}
+@keyframes cur{0%,100%{border-color:rgba(180,160,255,.6)}50%{border-color:transparent}}
+.divider{width:40px;height:1px;background:rgba(255,255,255,.12);opacity:0;transition:opacity .6s}
+.icons{display:flex;align-items:center;justify-content:center;gap:clamp(1.2rem,4vw,2rem);margin-top:.5rem;opacity:0;transition:opacity .6s}
+.btn{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.03);text-decoration:none;transition:color .3s,border-color .3s,transform .3s;position:relative}
+.btn::after{content:'';position:absolute;inset:-1px;border-radius:50%;border:1px solid rgba(180,100,255,0.7);opacity:0;transform:scale(1)}
+.btn:hover{color:#fff;border-color:rgba(255,255,255,0.4);transform:translateY(-2px)}
+.btn:hover::after{animation:pulse-ring .7s ease-out forwards}
+@keyframes pulse-ring{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.75);opacity:0}}
+.btn:focus-visible{outline:2px solid rgba(180,100,255,0.6);outline-offset:3px}
+.btn svg{width:20px;height:20px;flex-shrink:0}
+</style>
+</head>
+<body>
+
+<canvas id="bg"></canvas>
+
+<div id="clock"><div id="clock-time"></div></div>
+
+<main class="wrap">
+  <h1 class="name" id="name-el">Ashish</h1>
+  <a class="url" id="url-el" href="https://www.ashish.me.uk" target="_blank" rel="noopener noreferrer"></a>
+  <div class="divider" id="div-el"></div>
+  <nav class="icons" id="icons-el">
+    <a class="btn" id="github-btn" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.02 10.02 0 0 0 22 12.017C22 6.484 17.522 2 12 2z"/></svg>
+    </a>
+    <a class="btn" id="insta-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a class="btn" id="email-btn" aria-label="Email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+    </a>
+  </nav>
+</main>
+
+<script>
+(function(){
+  var u='contact',d='ashish.me.uk';
+  document.getElementById('email-btn').href='mailto:'+u+'@'+d;
+  document.getElementById('github-btn').href='#';
+  document.getElementById('insta-btn').href='#';
+})();
+
+(function(){
+  var tz=Intl.DateTimeFormat().resolvedOptions().timeZone;
+  var fmt=new Intl.DateTimeFormat(navigator.language,{timeZone:tz,weekday:'short',month:'short',day:'numeric',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false});
+  var te=document.getElementById('clock-time'),ce=document.getElementById('clock');
+  function tick(){te.textContent=fmt.format(new Date());}
+  tick(); ce.style.opacity='1'; setInterval(tick,1000);
+})();
+
+function type(el,text,delay){
+  return new Promise(function(res){
+    el.textContent=text; el.style.opacity='1'; el.style.width='auto';
+    var w=Math.min(el.getBoundingClientRect().width,window.innerWidth*.9);
+    el.style.width='0';
+    var i=0,iv=setInterval(function(){
+      el.style.width=(w*(++i/text.length))+'px';
+      if(i>=text.length){clearInterval(iv);setTimeout(function(){el.classList.add('blink');res();},380);}
+    },delay);
+  });
+}
+
+(async function(){
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+  await wait(400);
+  document.getElementById('name-el').style.opacity='1';
+  await wait(600);
+  await type(document.getElementById('url-el'),'www.ashish.me.uk',58);
+  await wait(200);
+  document.getElementById('div-el').style.opacity='1';
+  await wait(150);
+  document.getElementById('icons-el').style.opacity='1';
+})();
+
+(function(){
+  var cv=document.getElementById('bg'),ctx=cv.getContext('2d');
+  var W,H,drops=[],mx=-999;
+  var cols=['rgba(0,255,180,','rgba(0,180,255,','rgba(180,0,255,'];
+
+  function init(){
+    W=cv.width=window.innerWidth; H=cv.height=window.innerHeight;
+    drops=[];
+    for(var i=0,n=Math.round(W/22);i<n;i++)
+      drops.push({x:Math.random()*W,y:Math.random()*H,len:Math.random()*50+15,spd:Math.random()*3+1.5,col:cols[i%3],a:Math.random()*.45+.15});
+  }
+  window.addEventListener('resize',init); init();
+  window.addEventListener('mousemove',function(e){mx=e.clientX;});
+  window.addEventListener('mouseleave',function(){mx=-999;});
+
+  (function draw(){
+    ctx.fillStyle='rgba(3,2,12,.2)'; ctx.fillRect(0,0,W,H);
+    for(var i=0;i<drops.length;i++){
+      var d=drops[i];
+      d.y+=d.spd*(mx>0&&Math.abs(d.x-mx)<60?2.8:1);
+      if(d.y>H+d.len){d.y=-d.len;d.x=Math.random()*W;}
+      var g=ctx.createLinearGradient(d.x,d.y-d.len,d.x,d.y);
+      g.addColorStop(0,d.col+'0)'); g.addColorStop(1,d.col+d.a+')');
+      ctx.beginPath(); ctx.moveTo(d.x,d.y-d.len); ctx.lineTo(d.x,d.y);
+      ctx.strokeStyle=g; ctx.lineWidth=1.2; ctx.stroke();
+    }
+    requestAnimationFrame(draw);
+  })();
+})();
+</script>
+</body>
+</html>
